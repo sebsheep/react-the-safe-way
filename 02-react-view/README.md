@@ -47,8 +47,8 @@ with no interaction.
      ```tsx
      if (deleted) {
        return (
-         <div className="bg-gray-100 p-4 my-4 border rounded">
-           <h2 className="text-lg font-bold">{title}</h2>
+         <div>
+           <h2>{title}</h2>
            <p>
              <del>{body}</del>
            </p>
@@ -56,8 +56,8 @@ with no interaction.
        );
      } else {
        return (
-         <div className="bg-gray-100 p-4 my-4 border rounded">
-           <h2 className="text-lg font-bold">{title}</h2>
+         <div>
+           <h2>{title}</h2>
            <p>{body}</p>
          </div>
        );
@@ -72,17 +72,17 @@ with no interaction.
        displayedBody = <del>body</del>;
      }
      return (
-       <div className="bg-gray-100 p-4 my-4 border rounded">
-         <h2 className="text-lg font-bold">{title}</h2>
+       <div>
+         <h2>{title}</h2>
          <p>{displayedBody}</p>
        </div>
      );
      ```
 
-     Note how we can assign JSX code to a variable and use it inside `{...}`.
+     Note how we can assign JSX value to a variable and use it inside `{...}`.
 
    - You might want to "inline" everything inside the `<p>` tag.
-     However, you can only use **expression** inside.
+     However, you can only use **expression** inside thos `{...}`.
 
      > **What's an expression**
      >
@@ -109,7 +109,7 @@ with no interaction.
      5 > 2 ? 42 : 87;
      ```
 
-     and check in the console.
+     and check in the browser JS console.
 
      Finally, use this syntax to inline the condition in the template
      instead of using a variable.
@@ -201,7 +201,7 @@ with no interaction.
 
    Let's define a global variable `let postCount = 0;` at the top of file,
    increment this counter at every call of the `Post` function and display this
-   counter befor the title.
+   counter before the title.
 
    You should see something like 😱:
 
