@@ -5,24 +5,6 @@ This chapter will focus on how to render things with react.
 The "apps" will be a bit boring since we'll only display static data
 with no interaction.
 
-We'll use [Tailwind](https://tailwindcss.com/) for styling. We import
-it in the `index.html` page with the following line (already present, you
-have nothing to do):
-
-```html
-<link
-  rel="stylesheet"
-  href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.15/dist/tailwind.min.css"
-/>
-```
-
-Tailwind provides a bunch of CSS classes you can combine to build your UI.
-E.g, to have a gray background with some padding:
-
-```html
-<div class="bg-gray-100 p-4">Blah blah...</div>
-```
-
 1. Look at the `App.tsx` file. The extension is `.tsx` meaning it mixes
    Typescript and some kind of (x)Html language (actually this is not true HTML,
    e.g. `class` is written `className`).
