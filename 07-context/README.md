@@ -160,5 +160,5 @@ Otherwise... Be really cautious by adopting this solution.
   values, functions or types to other modules.
 - Passing arguments down to nested components (a.k.a \_props drilling\_\_ brings
   strong type safety).
-- Using _contexts_ allows to sacrifice some type safety for the benefit of  
-  "easier" data retrieval for nested components.
+- Using _contexts_ allows to sacrifice some type safety and purity for the
+  benefit of "easier" data retrieval for nested components.

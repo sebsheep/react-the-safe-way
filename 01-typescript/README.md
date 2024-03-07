@@ -6,28 +6,18 @@ with the tools we'll use in the rest of the class.
 We're using simple `alert`/`prompt` modals for IO which is not what's
 recommended today, but it's really simple and enough for this example.
 
-1. First, look at the code in `src/main.ts`, ensure you understand all what you
-   see.
-2. More precisely, look at the `play_question` function:
-   - `` `${index + 1}. ${answer}` `` is JS syntax for string interpolation.
-     Rewrite it with simple string concatenation (`+`).
-   - `` (answer, index) => `${index + 1}. ${answer}` `` is an anonymous
-     function with 2 arguments. Rewrite it with a function defined with the
-     `function` keyword.
-   - what does the `.map` function? Rewrite it using a `for` loop (you might
-     need to use a new variable initialized at an empty array `[]` and the
-     `.push` method).
-3. Then run in a terminal (maybe you'll have to install NPM):
+1. Then run in a terminal (maybe you'll have to install NPM):
    ```
    cd ts-example
    npm install
    npm run dev
    ```
-4. This should start a development server, using
+2. This should start a development server, using
    [Vite](https://vitejs.dev/guide/). This server will watch for changes in your
    code, and automatically recompile TS files into JS files (because the
    browsers can only read JS files).
-5. Go to [http://localhost:5173](http://localhost:5173) (or the address displayed
+
+3. Go to [http://localhost:5173](http://localhost:5173) (or the address displayed
    by the previous command). The expected display in the browser should be
    something like:
 
@@ -44,7 +34,20 @@ recommended today, but it's really simple and enough for this example.
 
    You should notice that the text is all messed up. Can you easily spot
    where the code is wrong? Not easy, isn't it? Don't try to fix the
-   error for now, it should became obvious in the next question!
+   error for now, it should became obvious later on!
+
+4. Look at the code in `src/main.ts`, ensure you understand all what you
+   see.
+5. More precisely, look at the `play_question` function:
+
+   - `` `${index + 1}. ${answer}` `` is JS syntax for string interpolation.
+     Rewrite it with simple string concatenation (`+`).
+   - `` (answer, index) => `${index + 1}. ${answer}` `` is an anonymous
+     function with 2 arguments. Rewrite it with a function defined with the
+     `function` keyword.
+   - what does the `.map` function? Rewrite it using a `for` loop (you might
+     need to use a new variable initialized at an empty array `[]` and the
+     `.push` method).
 
 6. Look at the `tsconfig.json` file now. It configures how Typescript
    should work. You can see that:
@@ -130,4 +133,4 @@ recommended today, but it's really simple and enough for this example.
 > than to properly modify the code to have correct and complete type checking.
 >
 > So it is possible (and actually happens in real code bases) that the
-> execution leads to type errors dispite a succesful compilation.
+> execution leads to type errors despite a succesful compilation.
