@@ -48,21 +48,6 @@ Will add some state management and interactivity in our apps.
    multiple components: it is difficult to maintain it correctly and can lead to
    sneaky bugs really hard to solve.
 
-   **Quick solution**: add a `key` property to the counters, e.g. like:
-
-   ```tsx
-   <Counter key="the-life-counter" text="life" />
-   ```
-
-   (you don't have to add this prop to the component definition, `key` is
-   defined by React)
-
-   The key can be anything you want, it just has to be unique. It helps React
-   to associate a component to a state.
-   Add a key to the "life" and the "attack" counters.
-
-   **More robust solution**
-
    In most cases, the cleanest and most reliable solution is to "lift" the state
    one level up. That is, the state will be carried by the `App` component solely
    instead of having every component defining a state. That way, you components
