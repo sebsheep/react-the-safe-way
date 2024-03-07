@@ -126,8 +126,11 @@ drawback:
   looked good, but the feature didn't work at all!).
 
 When using contexts, correctness of your components usage depends on _where_ you
-use you component. You can easily loose those contexts if you refactor your code,
-and if it happens, the type checker cannot help you.
+use you component. In other words, if a component is using context, your
+copmonent is not _pure_ anymore!
+
+You can easily loose those contexts if you refactor your code, and if it
+happens, the type checker cannot help you.
 
 Hence, I recommend using contexts really sparingly, with context providers at the
 root of the application (to reduce the risk of not being in the scope of the
@@ -141,15 +144,15 @@ proxying values through all component levels (boring but really easy) against
 the time needed to find and fix a bug due to missing context (which can be
 stressful, uncomfortable and hard).
 
-More generally speaking, I recommend to evaluate any technical solution based on
-the ability of the type checker to catch mistakes:
+More generally speaking, I recommend to evaluate any technical solution considering:
 
-- If the type checker can catch mistakes and errors, so go on, you can use this
-  solutions with your eye closed if you like it. Compiler will help you if you
-  mess up.
-- Otherwise: does the few keystrokes we save when writing the code worths the
-  bugs that can arise from a misusage of the solution, compared to a maybe
-  more verbose but typed solution?
+- do I gain "purity"?
+- is the type checker able to warn me if I forgot to do something/do something
+  wrong?
+
+If the answer is "YES" fot both questions, go on the eyes closed: it often means
+you'll can easily and safely refactor your code if you change you mind.
+Otherwise... Be really cautious by adopting this solution.
 
 ## What did we learn
 

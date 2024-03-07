@@ -6,7 +6,7 @@ This section introduces a new way of dealing with state.
 
 1. Look at `AppCounter.tsx`. Try to understand all what's going on,
    including the type annotations.
-2. What does `{...state, counter: 4}`?
+2. What does `{...state, counter: 4}`? `...` is called the _spread operator_.
 3. Add a new button "Reset" which resets the counter to 0.
 4. - Add a field `fancy: null | "red" | "blue"` to the state. Also add a  
      `{ type: "FancyUpdated", fancy: null | "red" | "blue" }` action.
