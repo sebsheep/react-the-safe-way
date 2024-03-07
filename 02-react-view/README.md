@@ -67,9 +67,9 @@ with no interaction.
      to errors. So we could use a variable instead:
 
      ```tsx
-     let displayedBody = body;
+     let displayedBody = <>{body}</>;
      if (deleted) {
-       displayedBody = <del>body</del>;
+       displayedBody = <del>{body}</del>;
      }
      return (
        <div>
@@ -114,7 +114,7 @@ with no interaction.
      Finally, use this syntax to inline the condition in the template
      instead of using a variable.
 
-6. Copy past this list of posts in your code:
+6. Copy paste this list of posts in your code:
 
    ```ts
    const POSTS_RECEIVED = [
