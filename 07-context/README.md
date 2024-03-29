@@ -64,7 +64,7 @@ side effects as much as possible.
 
    **Question:** what is the role of `<Lang>` after the `createContext`?
 
-3. In the `Index.tsx` file, remove the `lang` prop in the `Item` component,  
+3. In the `Item.tsx` file, remove the `lang` prop in the `Item` component,  
    retrieve it instead from the "context":
 
    ```ts
@@ -86,12 +86,12 @@ side effects as much as possible.
    `useContext` in `Item.ts`, it just defaults to the value indicated in the
    `createContext` in `Lang.ts`.
 
-   We can add a context with the `LanguageContext.Provider` component in
+   We can add a context with the `LangContext.Provider` component in
    `App.tsx`:
 
    ```tsx
    return (
-     <LanguageContext.Provider value={state.lang}>
+     <LangContext.Provider value={state.lang}>
        <h1>A world of cats</h1>
        <div>
          <button onClick={() => dispatch({ type: "LangUpdated", lang: "FR" })}>
@@ -104,7 +104,7 @@ side effects as much as possible.
            <ItemList items={ITEMS} />
          </div>
        </div>
-     </LanguageContext.Provider>
+     </LangContext.Provider>
    );
    ```
 

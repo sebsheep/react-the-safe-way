@@ -60,7 +60,7 @@ The game runs like this:
        */
       function safeParseInt(s: string): number | null {
         try {
-          let n = BigInt(s);
+          const n = BigInt(s);
           if (
             n > BigInt(Number.MIN_SAFE_INTEGER) &&
             n < BigInt(Number.MAX_SAFE_INTEGER)

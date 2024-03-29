@@ -24,6 +24,7 @@ function App() {
       <label>
         Label
         <input
+          value={state.label}
           onInput={(event) =>
             dispatch({ type: "LabelUpdated", value: event.currentTarget.value })
           }
@@ -32,6 +33,7 @@ function App() {
       <label>
         Label short
         <input
+          value={state.shortLabel}
           onInput={(event) =>
             dispatch({
               type: "ShortLabelUpdated",

@@ -4,6 +4,13 @@ This section introduces a new way of dealing with state.
 
 ## Part 1: counter again, but with some fancy!
 
+We'll build a counter with 3 possible "themes". User will be able to change
+the theme by clicking on a button. Those themes will:
+
+- no theme, represented by `null`,
+- red theme, represented by `"red"`,
+- blue theme, represented by `"blue"`.
+
 1. Look at `AppCounter.tsx`. Try to understand all what's going on,
    including the type annotations.
 2. What does `{...state, counter: 4}`? `...` is called the _spread operator_.
