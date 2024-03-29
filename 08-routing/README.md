@@ -269,6 +269,17 @@ of the given city for the given year.
     Test in the browser that changing the city in the URL actually
     change the response.
 
+    > **Note**: checking if the city and year are in a correct format
+    > may seem like a lot of work, but keep in mind those data come
+    > from the "outside" of the program (the URL, which can be typed
+    > by the user or a malicious person).
+    >
+    > The more you validate those external data, the more you can catch
+    > errors soon and be able to debug quickly. Or even prevent a
+    > malicious user to forge a dangerous URL.
+    >
+    > _Validate user input_. Always!
+
 16. Great, input parameters of the HTTP query are now entirely safe!
 
     Let's do the same for the output parameters: write a `WEATHER_SCHEMA`
@@ -336,3 +347,117 @@ of the given city for the given year.
 
     Don't forget adding a `key` argument since you'll build
     an array of components.
+
+21. We handled the error in `loadTempData` by throwing an error.
+    TanStack provides a way to deal with it, you can read the
+    [**Handling Errors** part in the doc](https://tanstack.com/router/latest/docs/framework/react/guide/data-loading#handling-errors).
+    It's quite common in Javascript world.
+
+    I really don't like it since it is based on the exception mechanism
+    which is totally uncorrelated with the type system: we don't know
+    if the expected errors in `onError` or in `errorComponent` are the
+    same than what is actually raised in our `loader` (and in practice in
+    a big code base, this will eventually trigger a sneaky bug at some
+    point).
+
+    Good news is we don't actually _need_ those `onError` or
+    `errorComponent`. The key idea is to consider an _error_ like
+    a "normal" data, not a special `throw/try/catch` construct in the
+    language.
+
+    Concretly, you can modify the return type of `loadTempData`:
+
+    ```ts
+    async function loadTempData(arg: {
+      params: { city: string; year: string };
+    }): Promise<
+      | {
+          kind: "success";
+          city: string;
+          year: number;
+          averageMinTemperature: number;
+          averageMaxTemperature: number;
+        }
+      | { kind: "error"; errorMsg: string }
+    >;
+    ```
+
+    That is, this function will either return valid data or an error
+    message.
+
+    That means that instead of `throw new Error("blahblah");`
+    you can `return { kind: "error", errorMsg: "blahblah"};`.
+
+    Up to the `AverageTemp` component to display it properly.
+
+    Do it! Use a `switch(data.kind)` to determine what to display
+
+22. You can even be more precise in your return type:
+
+    ```ts
+    async function loadTempData(arg: {
+      params: { city: string; year: string };
+    }): Promise<
+      | {
+          kind: "success";
+          city: string;
+          year: number;
+          averageMinTemperature: number;
+          averageMaxTemperature: number;
+        }
+      | {
+          kind: "badParamsError";
+          field: "year" | "city";
+        }
+      | {
+          kind: "fetchFailed";
+          statusCode: number;
+          errorMsg: string;
+        }
+      | { kind: "decodingFailed" }
+    >;
+    ```
+
+    This way you can display specific error for a particular situation.
+    We could imagine to only have a "yellow warning" for the first error
+    and a "red error" for the other two. Also note each error has its
+    own set of data.
+
+    Such approach can also be useful if you want to provide your app
+    in multiple languages (English, French, Spanish...). Your
+    `loadTempData` only deals with _data_ which is decoupled from the
+    rendering handled only in the component.
+
+    Do this modification!
+
+> **Note**: we only scratched the surface of the TanStack Route lib.
+> It should be enough for the present course and a bit beyond, but you'll
+> probably need more control in real code. Feel free to explore the
+> documentation.
+>
+> That said, be precautionous, as this lib heavily uses impures functions
+> which can lead to hard to catch errors if not handled properly. Always
+> balance shiny features (like e.g. caching) with potential uncaught bugs
+> due to using impure code.
+>
+> Also, keep in mind to always validate user input as soon as possible,
+> whatever the technology you're using.
+
+## What did we learn?
+
+- Single Page Application vs Multi Pages Application
+- With TanStack Route:
+  - routes can be specified with filenames, the dev
+    server generating a file based on those filenames.
+  - the params are prefixed with `$` in the filename.
+  - the routes and their params can be built in a
+    typesafe way with `<Link to=... params=...>`.
+  - to retreive the params from the route, we can use `Route.useParams`
+  - we can specify data to load before navigating to the page and retreive
+    it with `Route.useLoaderData`.
+  - TanStack has a mechnamism to handle errors that has been raised.
+  - ... even if there are other simple and more type safe solution to
+    address this issue!
+- Params in URLs are "user input" and should be validated.
+- Using a function to build an URL for an API allows to abstract over
+  details.
