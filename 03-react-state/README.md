@@ -63,5 +63,4 @@ Will add some state management and interactivity in our apps.
 - How to use `useState`.
 - Dealing with _event handler_ like `onClick`.
 - Removing a component from the tree destroy its state.
-- ... Except if it has a `key` attribue.
 - A solid solution to avoid bugs is to lift state in the parent component.

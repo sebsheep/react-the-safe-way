@@ -267,7 +267,8 @@ of the given city for the given year.
     Use this city to retreive the coordinates in the above dictionary.
 
     Test in the browser that changing the city in the URL actually
-    change the response.
+    change the response. Try cities in the above list and other garbage
+    strings.
 
     > **Note**: checking if the city and year are in a correct format
     > may seem like a lot of work, but keep in mind those data come
@@ -436,7 +437,7 @@ of the given city for the given year.
 > documentation.
 >
 > That said, be precautionous, as this lib heavily uses impures functions
-> which can lead to hard to catch errors if not handled properly. Always
+> which can lead to hard-to-catch-errors if not handled properly. Always
 > balance shiny features (like e.g. caching) with potential uncaught bugs
 > due to using impure code.
 >
@@ -445,13 +446,15 @@ of the given city for the given year.
 
 ## What did we learn?
 
-- Single Page Application vs Multi Pages Application
+- Single Page Application vs Multi Pages Application (be careful, SPA is
+  not always the good choice)
 - With TanStack Route:
   - routes can be specified with filenames, the dev
     server generating a file based on those filenames.
   - the params are prefixed with `$` in the filename.
   - the routes and their params can be built in a
     typesafe way with `<Link to=... params=...>`.
+  - `<a>` tags lead to full page reload, `<Link>` tags doesn't.
   - to retreive the params from the route, we can use `Route.useParams`
   - we can specify data to load before navigating to the page and retreive
     it with `Route.useLoaderData`.
