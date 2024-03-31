@@ -277,9 +277,13 @@ npm install --save react-use-websocket@3.0.0
    Use a `switch` to decide what JSX to return. A dicussion could look like:
 
    > **Zany Tiger**: Hi there!
+   >
    > 🎉 **Happy Penguin** joined the discussion 🎉
+   >
    > **Happy Penguin**: it looks like you have a lot of fun here!
+   >
    > **Zany Tiger**: Actually... No. Good bye.
+   >
    > 😭 **Zany Tiger** left 😭
 
    Use the `LogMessage` component inside the `App` one to display the messages.
