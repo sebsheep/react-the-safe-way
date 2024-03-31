@@ -200,8 +200,9 @@ npm install --save react-use-websocket@3.0.0
    in an array and we will treat the `Welcome` message apart.
 
    Write a `const WEBSOCKET_EVENT_SCHEMA: z.ZodType<WebsocketEvent>` Zod schema (Zod is
-   already installed) and decode the payload in the `useEffect` that handles
-   `lastJsonMessage` changes.
+   already installed). You can use
+   [`dicriminatedUnion`](https://zod.dev/?id=discriminated-unions). Then decode the
+   payload in the `useEffect` that handles `lastJsonMessage` changes.
 
 3. Here are the `State` and `Action` types we'll use:
 
@@ -361,6 +362,7 @@ npm install --save react-use-websocket@3.0.0
 - `useEffect` takes an array of dependecies that make the effect handler running
   as soon as one of the dependencies is updated.
 - Some people post wrong solutions in comments.
+- We can use `z.discriminatedUnion` to decode union types.
 - The `reducer` pattern fits well with websockets: every kind of message coming from
   the websocket is a kind of `Action`.
 - Always keep in mind "make impossible states impossible" when modelling the `State`.
