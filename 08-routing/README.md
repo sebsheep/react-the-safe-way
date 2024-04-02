@@ -115,8 +115,8 @@ and browse the project at http://localhost:5173/ to answer the following questio
 4. In this `__root.tsx` file, what is the purpose of the `<Outlet>` component?
 5. Add a footer displayed on all the pages: it should consist of an horizontal rule
    (`<hr>` tag) and a text like "React, the (type) safe way ©".
-6. In the `compute.$a.$b.lazy.tsx` file, what is the purpose of `$` in the file name?
-7. In the `compute.$a.$b.lazy.tsx` file, how do we get the value of the parameters `a` and
+6. In the `compute.$a.$b.tsx` file, what is the purpose of `$` in the file name?
+7. In the `compute.$a.$b.tsx` file, how do we get the value of the parameters `a` and
    `b`?
 8. Create a `greeting` page with two parameters `name` and `adjective`. Make it display
    ```
