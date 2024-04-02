@@ -92,7 +92,7 @@ side effects as much as possible.
    ```tsx
    return (
      <LangContext.Provider value={state.lang}>
-       <h1>A world of cats</h1>
+       <h1>Central Store</h1>
        <div>
          <button onClick={() => dispatch({ type: "LangUpdated", lang: "FR" })}>
            FR

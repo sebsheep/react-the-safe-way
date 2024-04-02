@@ -204,6 +204,8 @@ npm install --save react-use-websocket@3.0.0
    [`dicriminatedUnion`](https://zod.dev/?id=discriminated-unions). Then decode the
    payload in the `useEffect` that handles `lastJsonMessage` changes.
 
+   Log an error with `console.error` if decoding fails.
+
 3. Here are the `State` and `Action` types we'll use:
 
    ```tsx
